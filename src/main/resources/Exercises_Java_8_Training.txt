@@ -1,0 +1,38 @@
+== Exercice 1
+Write a method taking an array of min 2 integers, return an array of the sum 2 consecutive numbers.
+Ex: 
+2 1 -> 3
+3 0 7 -> 3 7
+
+Implement unit tests.
+
+== Exercice 2
+Write a method returning the number of days between 2 dates using the new java.time library.
+Implement unit tests.
+
+== Exercice 3
+Write a method that accepts two integer values between 21 to 99 and return true 
+if there is a common digit in both numbers.
+Use Streams and lambda expressions.
+
+Sample Output:
+
+Input the first number : 35                                            
+Input the second number: 45                                            
+Result: true
+
+== Exercice 4
+Write a method that removes all blank spaces from a string, replaces all 'a' with 'z'
+and swaps the first letter with the last letter.
+Use Streams and lambda expressions.
+Sample Output:
+
+d p -> pd                                            
+Implement unit tests
+
+== Exercice 5
+Write a Class "Position" with attributes date and value (decimal).
+Write a method taking a list of "Position" and returning the max value and min value of the list.
+Use Streams and lambda expressions.
+
+Implement unit tests.
