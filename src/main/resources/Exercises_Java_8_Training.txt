@@ -22,7 +22,7 @@ Input the second number: 45
 Result: true
 
 == Exercice 4
-Write a method that removes all blank spaces from a string, replaces all 'a' with 'z'
+Write a method that removes all blank spaces from a string, replaces all 'a' with 'z', 'z' with 'a',
 and swaps the first letter with the last letter.
 Use Streams and lambda expressions.
 Sample Output:

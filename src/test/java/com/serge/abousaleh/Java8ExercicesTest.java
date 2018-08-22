@@ -5,12 +5,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class Java8ExercicesTest {
 
@@ -81,6 +85,24 @@ class Java8ExercicesTest {
 	void shouldNotMatchDigits_whenNonMatchingDigitsNumbersProvided(int a, int b, boolean result) {
 		// Assert
 		Assertions.assertThat(Java8Exercices.matchingDigits(a, b)).isEqualTo(result);
+	}
+	
+	private static Stream<Arguments> formatMyStringProvider() {
+	    return Stream.of(
+	            Arguments.of("dp", "pd"),
+	            Arguments.of("d p", "pd"),
+	            Arguments.of("o1	p", "p1o"),
+	            Arguments.of("adxz q", "qdxaz"),
+	            Arguments.of(" Hela lo a", "zelzloH")
+	    );
+	}
+	
+	@DisplayName("Should format Strings")
+	@ParameterizedTest(name = "{index} => str={0}, result={1}")
+	@MethodSource("formatMyStringProvider")
+	void shouldFormatString_whenStringProvided(String str, String result) {
+		// Assert
+		Assertions.assertThat(Java8Exercices.formatMyString(str)).isEqualTo(result);
 	}
 
 }

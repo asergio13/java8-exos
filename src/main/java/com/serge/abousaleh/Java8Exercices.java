@@ -3,13 +3,10 @@ package com.serge.abousaleh;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public final class Java8Exercices {
 	
@@ -72,6 +69,34 @@ public final class Java8Exercices {
 		}
 		
 		return result;
+	}
+	
+	/**
+	 * Exercice 4
+	 * @param str
+	 * @return removes all blank spaces from a string, replaces all 'a' with 'z', 'z' with 'a' 
+	 *  and swaps the first letter with the last letter.
+	 */
+	public static String formatMyString(String str) {
+
+		List<Character> charsList = str.chars()
+				.mapToObj(e -> (char)e)
+				.filter(ch -> (ch != ' ' && ch != '\t')) // filter blank spaces and tabs
+				.map(e -> { 
+					Character ch = e;            // Change 'a' to 'z' and 'z' to 'a'
+					if(ch == 'a') ch = 'z';
+					else if(ch == 'z') ch = 'a';
+					return ch;
+				} )
+				.collect(Collectors.toList());
+		
+		// reverse first char and last char
+		char firstChar = charsList.get(0).charValue();
+		charsList.set(0, charsList.get(charsList.size() - 1));
+		charsList.set(charsList.size() - 1, firstChar);
+		
+		// Convert back the List to a String
+		return charsList.stream().map(e -> e.toString()).collect(Collectors.joining());
 	}
 	
 }
