@@ -1,5 +1,7 @@
 package com.serge.abousaleh.functional;
 
+import java.util.Optional;
+
 public class Mylambdas {
 
 	/**
@@ -40,4 +42,30 @@ public class Mylambdas {
 		return(sum);
 	}
 	
+	public String genericComputationString(String param) {
+		
+		MyGeneric<String> reverse = (str) -> {
+			String strResult = "";
+			for(int i = Optional.ofNullable(str).orElse("").length() -1; i >= 0; i--) {
+				strResult += str.charAt(i);
+			}
+			return strResult;
+		};
+		return reverse.compute(param);
+	}
+	
+	public Integer genericComputationInteger(Integer param) {
+		
+		// Integer version of MyGeneric
+		MyGeneric<Integer> factorial = (Integer n) -> {
+			int intResult = 1;
+			
+			for(int i=1; i <= Optional.ofNullable(n).orElse(1); i++) {
+				intResult = i * intResult;
+			}
+			return intResult;
+		};
+		
+		return factorial.compute(param);
+	}
 }
