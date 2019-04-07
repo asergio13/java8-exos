@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public final class Java8Exercices {
 	
@@ -97,6 +98,33 @@ public final class Java8Exercices {
 		
 		// Convert back the List to a String
 		return charsList.stream().map(e -> e.toString()).collect(Collectors.joining());
+	}
+	
+	/*
+	 * Exercice 5
+	 * Existing String: abc, new Letter 'i'
+	 * abc => aibici
+	 */
+	public static String insertNewLetterBetweenEachChar (String existingWord, Character newLetter) {
+		return existingWord.chars()
+				.mapToObj(c -> (char)c + newLetter.toString()).collect(Collectors.joining());
+	}
+	
+	
+	/*
+	 * Exercice 6
+	 * Take a List of Integer, Si digit est pair subtract 1 to it (excluding 0)
+	 * 235460 => 135350
+	 */
+	public static String substractOnetoPair (String existingDigits) {
+		List<Integer> listDigits = existingDigits.chars().mapToObj(c -> {
+			Integer digit = Character.getNumericValue(c);  
+			if (digit % 2 == 0 && digit != 0) return (digit -1);
+			return digit;
+		}).collect(Collectors.toList());
+		
+		return listDigits.stream().map(String::valueOf)
+				.collect(Collectors.joining("")).toString();
 	}
 	
 }

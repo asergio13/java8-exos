@@ -104,5 +104,37 @@ class Java8ExercicesTest {
 		// Assert
 		Assertions.assertThat(Java8Exercices.formatMyString(str)).isEqualTo(result);
 	}
+	
+	private static Stream<Arguments> insertNewLetterStringProvider() {
+	    return Stream.of(
+	            Arguments.of("dp", 'i', "dipi"),
+	            Arguments.of("dp", ' ', "d p "),
+	            Arguments.of("d", '0', "d0")
+	    );
+	}
+	
+	@DisplayName("Should insert new letter")
+	@ParameterizedTest(name = "{index} => str={0}, letter= {1}, result={2}")
+	@MethodSource("insertNewLetterStringProvider")
+	void shouldInsertNewLetterBetweenEachChar_whenStringProvided(String str, Character letter, String result) {
+		// Assert
+		Assertions.assertThat(Java8Exercices.insertNewLetterBetweenEachChar(str, letter)).isEqualTo(result);
+	}
+	
+	private static Stream<Arguments> substractOneProvider() {
+	    return Stream.of(
+	            Arguments.of("235460", "135350"),
+	            Arguments.of("0", "0"),
+	            Arguments.of("2", "1")
+	    );
+	}
+	
+	@DisplayName("Should substract 1 from pair digits")
+	@ParameterizedTest(name = "{index} => str={0}, result={1}")
+	@MethodSource("substractOneProvider")
+	void shouldSubstractOnetoPair_whenListOfIntegersProvided(String str, String result) {
+		// Assert
+		Assertions.assertThat(Java8Exercices.substractOnetoPair(str)).isEqualTo(result);
+	}
 
 }
